@@ -37,7 +37,7 @@ Direct marketing campaigns are expensive. Calling every customer in the database
 
 **Tech Stack**
 
-Language: Python 3.9
+Language: Python 3.11
 
 Libraries: Pandas, Scikit-Learn, XGBoost, Imbalanced-Learn (SMOTE), SHAP
 
@@ -55,6 +55,10 @@ Visualization: Seaborn, Matplotlib, Plotly
 
    - Analyzed demographic features (age, job, marital status) against the target.
    - Identified Class Imbalance: 88% "No" vs. 12% "Yes".
+   - Data Cleaning Strategy: Data-Driven Decisions(after performing initial EDA concluded )
+     - Statistical Validation: Performed Chi-Square tests on categorical features.
+     - Key Finding: Despite high "unknown" rates in poutcome (81%) and contact (28%), p-values ($< 0.05$) confirmed they are significant predictors of           subscription.
+     - Action: Retained "unknown" as a valid category for significant features; used mode-imputation for features with $< 5\%$ unknowns (job, education).
    - Detected Data Leakage: Identified that the duration feature must be handled carefully to ensure the model remains "predictive" rather than "descriptive."
      
 3. Feature Engineering & Preprocessing
