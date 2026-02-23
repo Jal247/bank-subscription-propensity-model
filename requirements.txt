@@ -1,9 +1,23 @@
-numpy>=1.24.0
-pandas>=2.0.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
-scikit-learn>=1.2.0
-xgboost>=1.7.0
-imbalanced-learn>=0.10.0
-shap>=0.41.0
-jupyter
+# List the core libraries used in this project
+libraries = [
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "xgboost",
+    "shap",
+    "matplotlib",
+    "seaborn",
+    "joblib"
+]
+
+import pkg_resources
+
+with open('requirements.txt', 'w') as f:
+    for lib in libraries:
+        try:
+            version = pkg_resources.get_distribution(lib).version
+            f.write(f"{lib}=={version}\n")
+        except pkg_resources.DistributionNotFound:
+            print(f"Warning: {lib} not found in environment.")
+
+print("✅ requirements.txt has been generated!")
