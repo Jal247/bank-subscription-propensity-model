@@ -17,8 +17,9 @@ def run_full_pipeline():
     paths = {
         'raw_data': '../data/raw/bank-full.csv',
         'processed_dir': '../data/processed/',
-        'model_dir': '../models/',
-        'pickle_dir': '../data/pickle/'
+        'model_dir': '../models/joblib/',
+        'pickle_dir': '../models/pickle/',
+        'image_dir' : '../image/'
     }
     
     # Ensure directories exist
@@ -29,8 +30,8 @@ def run_full_pipeline():
     # --- STEP 2: DATA LOADING & PREPROCESSING ---
     print("📥 Loading and Preprocessing Data...")
     # Load your processed datasets (assuming they were saved previously)
-    X_train = pd.read_csv(os.path.join(paths['processed_dir'], 'X_train_resampled.csv'))
-    y_train = pd.read_csv(os.path.join(paths['processed_dir'], 'y_train_resampled.csv')).values.ravel()
+    X_train = pd.read_csv(os.path.join(paths['processed_dir'], 'X_train_balanced.csv'))
+    y_train = pd.read_csv(os.path.join(paths['processed_dir'], 'y_train_balanced.csv')).values.ravel()
     X_test = pd.read_csv(os.path.join(paths['processed_dir'], 'X_test_final.csv'))
     y_test = pd.read_csv(os.path.join(paths['processed_dir'], 'y_test_final.csv')).values.ravel()
     
@@ -63,7 +64,7 @@ def run_full_pipeline():
     fig, ax = plt.subplots(figsize=(8, 6))
     ConfusionMatrixDisplay.from_predictions(y_test, y_pred, ax=ax, cmap='Blues')
     plt.title("Confusion Matrix")
-    plt.savefig(os.path.join(paths['processed_dir'], 'confusion_matrix.png'))
+    plt.savefig(os.path.join(paths['image_dir'], 'confusion_matrix.png'))
     plt.close()
 
     # --- STEP 5: INTERPRETABILITY (SHAP) ---
@@ -74,7 +75,7 @@ def run_full_pipeline():
     # Save SHAP Summary Plot
     plt.figure(figsize=(10, 12))
     shap.summary_plot(shap_values, X_test, feature_names=all_feature_names, show=False)
-    plt.savefig(os.path.join(paths['processed_dir'], 'shap_summary.png'))
+    plt.savefig(os.path.join(paths['image_dir'], 'shap_summary.png'))
     plt.close()
 
     # --- STEP 6: SAVING ARTIFACTS ---
@@ -91,7 +92,7 @@ def run_full_pipeline():
     # Update Requirements
     os.system('pip freeze > ../requirements.txt')
 
-    print("\n✅ Pipeline complete. All files saved to /models, /data, and /processed.")
+    print("\n✅ Pipeline complete. All files saved to /models, /data, /image and /processed.")
 
 if __name__ == "__main__":
     run_full_pipeline()
