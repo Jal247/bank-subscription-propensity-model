@@ -119,6 +119,9 @@ We prioritize metrics that reflect business value over simple accuracy:
 - Model Drift: Mitigated by suggesting a retraining schedule as macroeconomic conditions change.
 - Duration Bias: Crucial Note: The duration feature is excluded from predictive training to avoid data leakage, ensuring the model is usable before a call is made.
 
+**One-Click Portfolio:**
+  "Just run python run_all.py and it will build the entire project from scratch." - working on it
+
 **Folder Structure**
 
 bank-subscription-propensity/
