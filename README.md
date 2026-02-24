@@ -35,6 +35,30 @@ Direct marketing campaigns are expensive. Calling every customer in the database
 - Customer Fatigue: Annoying customers who have zero interest in the product.
 - Resource Inefficiency: Sales agents spending time on "cold" leads.
 
+### Project Summary: Term Deposit Subscription Prediction
+
+**Objective**
+The goal of this project was to build a predictive model to identify customers most likely to subscribe to a bank term deposit. Given the high cost of manual outreach, the focus was on maximizing Recall (identifying as many potential subscribers as possible) while maintaining a high F1-Score to ensure call center efficiency.
+
+**Technical Workflow**
+Data Engineering: Engineered features like call_efficiency and total_contacts, which proved to be top predictors of success.
+
+Addressing Imbalance: Applied SMOTE (Synthetic Minority Over-sampling Technique) to the training data to overcome the natural "class imbalance" where most customers say "no."
+
+Model Selection: Evaluated four models (Logistic Regression, KNN, Random Forest, and XGBoost). XGBoost was selected as the "Champion Model" after optimization via RandomizedSearchCV.
+
+Interpretability: Utilized SHAP values to decode the "Black Box," revealing that call duration, previous campaign success, and the absence of existing loans are the strongest indicators of subscription.
+
+**Final Model Performance**
+The optimized XGBoost model achieved a Recall of ~84%, meaning the bank can now identify 8 out of every 10 potential subscribers. By prioritizing leads with high probability scores, the bank can significantly reduce "wasted" calls and increase the overall ROI of the marketing campaign.
+
+**Strategic Recommendations**
+Lead Prioritization: The sales team should focus exclusively on high-probability leads identified by the model, specifically those with high call_efficiency scores.
+
+Timing is Key: Marketing efforts should be intensified in months like June and August, while avoiding May, which showed a negative correlation with success in this dataset.
+
+Customer Profile: Targeting customers who do not currently have housing or personal loans will yield a higher conversion rate, as these individuals appear to have more liquid capital for term deposits.
+
 **Tech Stack**
 
 Language: Python 3.11

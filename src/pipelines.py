@@ -78,6 +78,26 @@ def run_full_pipeline():
     plt.savefig(os.path.join(paths['image_dir'], 'shap_summary.png'))
     plt.close()
 
+    import scikitplot as skplt # You may need to add this to requirements.txt
+
+def plot_business_metrics(model, X_test, y_test, image_dir):
+    y_probs = model.predict_proba(X_test)
+    
+    # Cumulative Gains Chart
+    plt.figure(figsize=(10, 6))
+    skplt.metrics.plot_cumulative_gain(y_test, y_probs)
+    plt.title("Cumulative Gains Chart: Identifying High-Propensity Leads")
+    plt.savefig(os.path.join(image_dir, 'cumulative_gains.png'))
+    plt.close()
+    
+    # Lift Chart
+    plt.figure(figsize=(10, 6))
+    skplt.metrics.plot_lift_curve(y_test, y_probs)
+    plt.title("Lift Chart: Model vs. Random Targeting")
+    plt.savefig(os.path.join(image_dir, 'lift_chart.png'))
+    plt.close()
+    print("📈 Lift and Gain charts saved to /image/")
+
     # --- STEP 6: SAVING ARTIFACTS ---
     print("💾 Saving Models, Pickles, and Requirements...")
     
