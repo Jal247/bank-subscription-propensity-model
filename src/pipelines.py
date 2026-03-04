@@ -40,7 +40,7 @@ def run_full_pipeline():
     all_feature_names = joblib.load(os.path.join(paths['model_dir'], 'feature_names.joblib'))
 
     # --- STEP 3: MODEL TRAINING ---
-    print("🏋️  Training Optimized XGBoost Model...")
+    print(" Training Optimized XGBoost Model...")
     # Using the best parameters discovered during your research
     model = XGBClassifier(
         n_estimators=200,
@@ -53,7 +53,7 @@ def run_full_pipeline():
     model.fit(X_train, y_train)
 
     # --- STEP 4: EVALUATION & VISUALIZATION ---
-    print("📊 Evaluating Performance...")
+    print(" Evaluating Performance...")
     y_pred = model.predict(X_test)
     y_probs = model.predict_proba(X_test)[:, 1]
     
@@ -68,7 +68,7 @@ def run_full_pipeline():
     plt.close()
 
     # --- STEP 5: INTERPRETABILITY (SHAP) ---
-    print("🔍 Generating SHAP Interpretability...")
+    print(" Generating SHAP Interpretability...")
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(X_test)
     
