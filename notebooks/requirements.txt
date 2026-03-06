@@ -1,8 +1,10 @@
 pandas
 numpy
+os
 scikit-learn
 xgboost
 shap
 matplotlib
 seaborn
 joblib
+pickle
