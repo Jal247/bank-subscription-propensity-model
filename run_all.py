@@ -7,7 +7,7 @@ def execute_project():
     # 1. Run Preprocessing
     print("\n--- STEP 1: PREPROCESSING ---")
     # This calls your preprocess_data.py script
-    exit_code_1 = os.system('python src/preprocess_data.py')
+    exit_code_1 = os.system('python src/preprocessing.py')
     
     if exit_code_1 != 0:
         print("❌ Error occurred in Preprocessing. Stopping pipeline.")
@@ -18,7 +18,7 @@ def execute_project():
     # 2. Run Training & Evaluation
     print("\n--- STEP 2: MODEL TRAINING & EVALUATION ---")
     # This calls your pipeline.py script
-    exit_code_2 = os.system('python src/pipeline.py')
+    exit_code_2 = os.system('python src/pipelines.py')
     
     if exit_code_2 != 0:
         print("❌ Error occurred in Pipeline. Stopping.")
