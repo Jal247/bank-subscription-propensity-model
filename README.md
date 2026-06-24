@@ -148,6 +148,7 @@ We prioritize metrics that reflect business value over simple accuracy:
 
 **Folder Structure**
 
+```
 bank-subscription-propensity/
 ├── data/               # Raw and processed data (GitIgnored)
 ├── images/             # Plots for your README (SHAP, Confusion Matrix)
@@ -159,6 +160,7 @@ bank-subscription-propensity/
 ├── .gitignore          # Files GitHub should ignore (like large datasets)
 ├── README.md           # The professional documentation we wrote
 └── requirements.txt    # Library dependencies
+```
 
 **How to Run**
 
